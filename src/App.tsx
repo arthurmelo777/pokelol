@@ -1,18 +1,18 @@
 import React from 'react';
-import Header from './components/Header';
-import Button from './components/Button';
-import Footer from './components/Footer';
+import HomePage from './components/HomePage';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import PokemonPage from './components/PokemonPage';
+import LoLPage from './components/LoLPage';
 
 function App() {
   return (
-    <div className="App">
-      <Header></Header>
-      <Button name="Pokemon"></Button>
-      <br />
-      <Button name="LoL"></Button>
-      <br />
-      <Footer></Footer>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage/>}></Route>
+        <Route path="/pokemon" element={<PokemonPage/>}></Route>
+        <Route path="/lol" element={<LoLPage/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
