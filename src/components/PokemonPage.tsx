@@ -1,8 +1,20 @@
 import React from 'react'
 
-function PokemonPage() {
+interface Props {
+  nome: string
+  foto: string
+  tipos: string[]
+}
+
+function PokemonPage({nome, foto, tipos}: Props) {
   return (
-    <div>PokemonPage</div>
+    <div>
+      <h1>Pokemon: {nome}</h1>
+      <img src={foto} alt="" />
+      {tipos.map((item, index) => (
+        <p key={index}>{item}</p>
+      ))}
+    </div>
   )
 }
 

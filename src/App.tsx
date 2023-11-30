@@ -4,13 +4,15 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import PokemonPage from './components/PokemonPage';
 import LoLPage from './components/LoLPage';
 
+const tipos: string[] = ['Normal'];
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/pokemon" element={<PokemonPage/>}></Route>
-        <Route path="/lol" element={<LoLPage/>}></Route>
+        <Route path="/pokemon" element={<PokemonPage nome='' foto='' tipos={tipos} />}></Route>
+        <Route path="/lol" element={<LoLPage nome='' foto='' classe=''/>}></Route>
       </Routes>
     </Router>
   );
