@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRandomDigimon } from '../apiGateway';
+import { useNavigate } from 'react-router-dom';
 
 const DigimonRandomPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const [randomDigimon, setRandomDigimon] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,6 +53,8 @@ const DigimonRandomPage: React.FC = () => {
           )}
         </div>
       )}
+
+      <button onClick={handleHomeClick}>Voltar</button>
     </div>
   );
 };

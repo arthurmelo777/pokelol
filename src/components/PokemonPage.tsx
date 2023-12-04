@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRandomPokemon } from '../apiGateway';
+import { useNavigate } from 'react-router-dom';
 
 interface PokemonDetails {
   name: string;
@@ -8,6 +9,12 @@ interface PokemonDetails {
 }
 
 const PokemonRandomPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const [randomPokemon, setRandomPokemon] = useState<PokemonDetails | null>(null);
 
   useEffect(() => {
@@ -49,6 +56,8 @@ const PokemonRandomPage: React.FC = () => {
 
         </div>
       )}
+
+      <button onClick={handleHomeClick}>Voltar</button>
     </div>
   );
 };
