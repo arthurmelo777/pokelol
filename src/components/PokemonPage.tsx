@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { fetchRandomPokemon } from '../apiGateway';
 
 interface PokemonDetails {
   name: string;
@@ -10,18 +11,16 @@ const PokemonRandomPage: React.FC = () => {
   const [randomPokemon, setRandomPokemon] = useState<PokemonDetails | null>(null);
 
   useEffect(() => {
-    const fetchRandomPokemon = async () => {
+    const fetchRandomPokemonData = async () => {
       try {
-        const randomId = Math.floor(Math.random() * 898) + 1;
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
-        const data = await response.json();
+        const data = await fetchRandomPokemon();
         setRandomPokemon(data);
       } catch (error) {
         console.error('Erro ao buscar Pokémon aleatório:', error);
       }
     };
 
-    fetchRandomPokemon();
+    fetchRandomPokemonData();
   }, []);
 
   return (
