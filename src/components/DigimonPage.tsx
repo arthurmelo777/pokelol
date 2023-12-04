@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { fetchRandomDigimon } from '../apiGateway';
 
 const DigimonRandomPage: React.FC = () => {
   const [randomDigimon, setRandomDigimon] = useState<any | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchRandomDigimon = async () => {
+    const fetchRandomDigimonData = async () => {
       try {
-        const response = await fetch('digi-api.com/api/v1/digimon/random');
-        const data = await response.json();
-        setRandomDigimon(data); // Certifique-se de ajustar de acordo com a estrutura dos dados da Digimon API
+        const data = await fetchRandomDigimon();
+        setRandomDigimon(data);
       } catch (error) {
         console.error('Erro ao buscar Digimon aleatório:', error);
+        setError('Erro ao buscar Digimon aleatório');
       }
     };
 
-    fetchRandomDigimon();
+    fetchRandomDigimonData();
   }, []);
+
+  if (error) {
+    return (
+      <div>
+        <h1>Erro ao buscar Digimon</h1>
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -23,9 +34,16 @@ const DigimonRandomPage: React.FC = () => {
       {randomDigimon && (
         <div>
           <h2>Detalhes do Digimon:</h2>
-          {/* Exibir detalhes do Digimon conforme a estrutura dos dados fornecidos pela Digimon API */}
           <p>Nome: {randomDigimon.name}</p>
-          <p>Nível: {randomDigimon.level}</p>
+          {randomDigimon.images && randomDigimon.images.length > 0 && (
+            <div>
+              <img
+                src={randomDigimon.images[0].href} // URL da imagem fornecido pela API
+                alt={randomDigimon.name}
+                style={{ width: '200px', height: '200px' }}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

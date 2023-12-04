@@ -17,7 +17,8 @@ const BASE_URL = {
   
   export const fetchRandomDigimon = async () => {
     try {
-      const response = await fetch(`${BASE_URL.digimon}digimon/random`);
+      const randomDigiId = Math.floor(Math.random() * 1421) + 1;  //Vi que na API tem até o Dot Lalamon com id 1422
+      const response = await fetch(`${BASE_URL.digimon}digimon/${randomDigiId}`);
       const data = await response.json();
       return data;
     } catch (error) {
