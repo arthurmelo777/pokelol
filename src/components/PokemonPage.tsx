@@ -15,6 +15,10 @@ const PokemonRandomPage: React.FC = () => {
     navigate('/');
   };
 
+  const handleReload = () => {
+    window.location.reload();
+  }
+
   const [randomPokemon, setRandomPokemon] = useState<PokemonDetails | null>(null);
 
   useEffect(() => {
@@ -58,6 +62,7 @@ const PokemonRandomPage: React.FC = () => {
       )}
 
       <button onClick={handleHomeClick}>Voltar</button>
+      <button onClick={handleReload}>↺</button>
     </div>
   );
 };

@@ -15,7 +15,7 @@ function HomePage() {
   return (
     <div>
       <h1>Consulta de Pokemon e Digimon</h1>
-      <p>Deseja saber sobre algum Pokemon ou algum Digimon Você veio ao lugar certo!</p>
+      <p>Deseja saber sobre algum Pokemon ou algum Digimon? Você veio ao lugar certo!</p>
       <br />
       <p>Escolha sobre qual universo você quer pesquisar.</p>
 

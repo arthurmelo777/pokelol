@@ -9,6 +9,10 @@ const DigimonRandomPage: React.FC = () => {
     navigate('/');
   };
 
+  const handleReload = () => {
+    window.location.reload();
+  }
+
   const [randomDigimon, setRandomDigimon] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -55,6 +59,7 @@ const DigimonRandomPage: React.FC = () => {
       )}
 
       <button onClick={handleHomeClick}>Voltar</button>
+      <button onClick={handleReload}>↺</button>
     </div>
   );
 };
