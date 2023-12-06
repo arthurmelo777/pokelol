@@ -6,6 +6,7 @@ interface PokemonDetails {
   name: string;
   types: { type: { name: string } }[];
   sprites: { front_default: string };
+  description: string; // Nova propriedade para armazenar a descrição
 }
 
 const PokemonRandomPage: React.FC = () => {
@@ -20,12 +21,14 @@ const PokemonRandomPage: React.FC = () => {
   }
 
   const [randomPokemon, setRandomPokemon] = useState<PokemonDetails | null>(null);
+  const [imageDescription, setImageDescription] = useState<string>('');
 
   useEffect(() => {
     const fetchRandomPokemonData = async () => {
       try {
         const data = await fetchRandomPokemon();
         setRandomPokemon(data);
+        setImageDescription(data.description); // Atualiza a descrição com base na API
       } catch (error) {
         console.error('Erro ao buscar Pokémon aleatório:', error);
       }
@@ -47,7 +50,9 @@ const PokemonRandomPage: React.FC = () => {
               <li key={index}>{type.type.name}</li>
             ))}
           </ul>
-          {/* Esses sprites é como a gente chama a imagem dos pokemons */}
+          {/* Descrição da imagem */}
+          <p>Descrição da imagem: {imageDescription}</p>
+          {/* Imagem */}
           {randomPokemon.sprites && (
             <div>
               <img
@@ -57,7 +62,6 @@ const PokemonRandomPage: React.FC = () => {
               />
             </div>
           )}
-
         </div>
       )}
 
