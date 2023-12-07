@@ -23,7 +23,7 @@ function HomePage() {
       <button onClick={handleDigimonClick}>Digimon</button>
 
       <br />
-      <h3>Desenvolvido por Bruno Lins e Arthur de Melo</h3>
+      <h3>Desenvolvido por Arthur de Melo, Bruno Lins e José Vilanir</h3>
     </div>
   )
 }
